@@ -1,5 +1,6 @@
 import streamlit as st 
 import pickle
+import streamlit.components.v1 as components
 
 with open('personality.pkl', 'rb') as f:
     model = pickle.load(f)
@@ -37,3 +38,58 @@ if st.button ("پیش بینی"):
 
 
 st.text("توسط:رزیتا بویر")
+
+
+st.markdown("""
+<style>
+.stApp {
+    background: #1b3a4b;
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+}
+.css-1aumxhk {
+    background: linear-gradient(to right, #ff69b4, #1e90ff) !important;
+    border-radius:10px;
+}
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #ff69b4;
+    user-select: none;
+    z-index: 9999;
+    animation-name: fall;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+#snow-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+</style>
+<div id="snow-container"></div>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+<style>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    color: #ff69b4;  /* رنگ صورتی */
+}
+</style>
+""", unsafe_allow_html=True)
